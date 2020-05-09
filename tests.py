@@ -49,6 +49,6 @@ class TestPwdChecker(unittest.TestCase):
         expected = False
         self.assertEqual(check_pwd(pwd), expected)
 
-    
+
 if __name__ == '__main__':
     unittest.main()

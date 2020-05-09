@@ -12,4 +12,6 @@ def check_pwd(pwd):
         return False
     if re.search('[A-Z]', pwd) is None:
         return False
+    if re.search('[0-9]', pwd) is None:
+        return False
     return True
