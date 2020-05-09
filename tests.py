@@ -29,6 +29,12 @@ class TestPwdChecker(unittest.TestCase):
         expected = True
         self.assertEqual(check_pwd(pwd), expected)
 
+    def test4(self):
+        pwd = 'aB1#0000000000'
+        expected = True
+        self.assertEqual(check_pwd(pwd), expected)
+    
+
 
 if __name__ == '__main__':
     unittest.main()
