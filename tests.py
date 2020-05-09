@@ -4,19 +4,21 @@
 # Assignment: A2 - TDD Hands On
 
 import unittest
-from random import choices, randint
+from random import choice, randint
 import string
 from check_pwd import check_pwd
+
 
 def valid_pwd(length):
     assert(length >= 4)
     symbols = '~`!@#$%^&*()_+-='
-    pwd = choices(string.ascii_lowercase, k=1)
-    pwd += choices(string.ascii_uppercase, k=1)
-    pwd += choices(string.digits, k=1)
-    pwd += choices(symbols, k=1)
+    pwd = choice(string.ascii_lowercase)
+    pwd += choice(string.ascii_uppercase)
+    pwd += choice(string.digits)
+    pwd += choice(symbols)
     prefix_len = len(pwd)
-    pwd += choices((string.ascii_letters + string.digits + symbols), k=length-prefix_len)
+    for i in range(length-prefix_len):
+        pwd += choice((string.ascii_letters+string.digits+symbols))
     return ''.join(pwd)
 
 
