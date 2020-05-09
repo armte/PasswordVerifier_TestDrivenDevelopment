@@ -69,6 +69,16 @@ class TestPwdChecker(unittest.TestCase):
             expected = True
             self.assertEqual(check_pwd(pwd), expected)
 
+    def test10(self):
+        for i in range(6):
+            if i < 3:
+                length = randint(4, 7)
+            else:
+                length = randint(21, 29)
+            pwd = valid_pwd(length)
+            expected = False
+            self.assertEqual(check_pwd(pwd), expected)
+
 
 if __name__ == '__main__':
     unittest.main()
