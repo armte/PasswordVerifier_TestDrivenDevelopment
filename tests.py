@@ -4,12 +4,20 @@
 # Assignment: A2 - TDD Hands On
 
 import unittest
-import random
+from random import choices, randint
 import string
 from check_pwd import check_pwd
 
-def create_pwd(length):
-    return random.choices((string.ascii_leters + string.digits), length)
+def valid_pwd(length):
+    assert(length >= 4)
+    symbols = '~`!@#$%^&*()_+-='
+    pwd = choices(string.ascii_lowercase, k=1)
+    pwd += choices(string.ascii_uppercase, k=1)
+    pwd += choices(string.digits, k=1)
+    pwd += choices(symbols, k=1)
+    prefix_len = len(pwd)
+    pwd += choices((string.ascii_letters + string.digits + symbols), k=length-prefix_len)
+    return ''.join(pwd)
 
 
 class TestPwdChecker(unittest.TestCase):
@@ -54,6 +62,13 @@ class TestPwdChecker(unittest.TestCase):
         expected = False
         self.assertEqual(check_pwd(pwd), expected)
 
-    
+    def test9(self):
+        for i in range(5):
+            length = randint(8, 20)
+            pwd = valid_pwd(length)
+            expected = True
+            self.assertEqual(check_pwd(pwd), expected)
+
+
 if __name__ == '__main__':
     unittest.main()
