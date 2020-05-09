@@ -5,6 +5,6 @@
 
 
 def check_pwd(pwd):
-    if len(pwd) == 8 or len(pwd) == 20:
+    if 8 <= len(pwd) <= 20:
         return True
     return False
