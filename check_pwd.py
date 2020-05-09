@@ -5,4 +5,6 @@
 
 
 def check_pwd(pwd):
+    if len(pwd) == 8:
+        return True
     return False
